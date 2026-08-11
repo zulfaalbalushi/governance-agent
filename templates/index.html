@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Governance Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <div id="suggested-prompts">
+            <button class="suggestion">What are the ethical principles for AI in Oman?</button>
+            <button class="suggestion">What are the data retention requirements?</button>
+        </div>
+        <div id="input-area">
+            <input type="text" id="question-input" placeholder="Ask about AI governance...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
