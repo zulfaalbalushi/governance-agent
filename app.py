@@ -7,8 +7,13 @@ app = Flask(__name__)
 
 # Defines the route using a decorator: a function that wraps another function to add behaviour, this tells Flask what URL should trigger our function
 @app.route('/')
-def index():
-    # Automatically looks for templates/index.html and renders it
+def home():
+    # Landing page
+    return render_template('home.html')
+
+@app.route('/chat')
+def chat():
+    # Existing chat interface
     return render_template('index.html')
 
 @app.route('/ask', methods=['POST'])
