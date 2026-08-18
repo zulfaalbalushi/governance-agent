@@ -16,7 +16,7 @@ collection = chroma_client.get_or_create_collection(name="governance_docs")
 def expand_query(question):
     """Generate 2-3 alternative phrasings of the question for wider retrieval."""
     response = groq_client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="openai/gpt-oss-20b",
         temperature=0.2,
         max_tokens=200,
         messages=[
@@ -58,9 +58,9 @@ def get_answer(question):
     prompt = f"Context:\n{context}\n\nQuestion: {question}"
 
     response = groq_client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="openai/gpt-oss-20b",
         messages=[
-            {"role": "system", "content": "Only answer using the provided context. If the context does not contain the answer, say clearly that the information is not available in the governance documents. Always cite the document you retrieved the answer from, [Source: document name. Summarize the relevant information in your own words rather than quoting it directly. Always cite the source file.]"},
+            {"role": "system", "content": "Only answer using the provided context. If the context does not contain the answer, say clearly that the information is not available in the governance documents. Always cite the document you retrieved the answer from using this format: [Source: document name]. For source naming, map docs/national_ai_policy_english.docx to National AI Policy and map docs/DATA_PROTECTION_LAW.pdf to Personal Data Protection Law in citations (for example, [Source: National AI Policy]). Summarize the relevant information in your own words rather than quoting it directly. Always cite the source file."},
             {"role": "user", "content": prompt}
         ]
     )

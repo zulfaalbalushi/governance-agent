@@ -145,7 +145,7 @@ button {
 }
 
 .app-shell {
-	max-width: 780px;
+	max-width: 960px;
 	margin: 0 auto;
 	padding: 40px 24px 160px;
 }
@@ -203,7 +203,7 @@ button {
 }
 
 .message {
-	max-width: min(100%, 680px);
+	max-width: min(100%, 900px);
 	padding: 16px 18px;
 	border: 1px solid rgba(232, 232, 232, 0.12);
 	background: #2A1E36;
@@ -393,7 +393,7 @@ button {
 }
 
 .composer-inner {
-	max-width: 780px;
+	max-width: 960px;
 	margin: 0 auto;
 	display: flex;
 	gap: 12px;
@@ -457,4 +457,40 @@ button {
 	#send-button {
 		width: 100%;
 	}
+
+	.ai-message table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 12px 0;
+	table-layout: fixed;
+	}
+
+	.ai-message th,
+	.ai-message td {
+	padding: 8px 12px;
+	text-align: left;
+	border: 1px solid rgba(232, 232, 232, 0.12);
+	word-wrap: break-word;
+	}
+
+	.ai-message th:nth-child(1),
+	.ai-message td:nth-child(1) {
+	width: 15%;
+	}
+
+	.ai-message th:nth-child(2),
+	.ai-message td:nth-child(2) {
+	width: 60%;
+	}
+
+	.ai-message th:nth-child(3),
+	.ai-message td:nth-child(3) {
+	width: 25%;
+	word-break: break-all;
+	}
+
+	.ai-message th {
+	background: rgba(88, 38, 136, 0.15);
+	font-weight: 600;
+    }
 }
