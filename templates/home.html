@@ -3,11 +3,18 @@
 <head>
     <title>AI Governance Agent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <header class="site-header">
-        <a class="site-brand" href="/">AI Governance Agent</a>
+        <a class="site-brand" href="/">
+            <img src="{{ url_for('static', filename='favicon.svg') }}" alt="" width="24" height="24" style="vertical-align: middle; margin-right: 8px;">
+            AI Governance Agent
+        </a>
         <nav class="site-nav">
             <a href="https://github.com/zulfaalbalushi/governance-agent" target="_blank" rel="noopener">GitHub &#8599;</a>
         </nav>
@@ -16,6 +23,7 @@
     <div class="app-shell">
         <section class="home-hero">
             <div class="hero-glow" aria-hidden="true"></div>
+            <div class="hero-glow-secondary" aria-hidden="true"></div>
             <div class="home-hero-inner">
                 <header class="app-header">
                     <div class="eyebrow">AI Governance Agent</div>
