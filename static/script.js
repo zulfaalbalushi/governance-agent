@@ -1,3 +1,32 @@
+function escapeHtml(value) {
+    return value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function renderMarkdown(text) {
+    const cleanText = String(text ?? "").replace(/\r\n/g, "\n");
+
+    if (typeof marked !== "undefined" && marked.parse) {
+        marked.setOptions({
+            gfm: true,
+            breaks: true,
+            headerIds: false,
+            mangle: false
+        });
+        return marked.parse(cleanText);
+    }
+
+    const escapedText = escapeHtml(cleanText)
+        .replace(/\n\n+/g, "</p><p>")
+        .replace(/\n/g, "<br>");
+
+    return `<p>${escapedText}</p>`;
+}
+
 function appendMessage(text, role) {
     const row = document.createElement("div");
     row.className = `message-row ${role}`;
@@ -10,13 +39,10 @@ function appendMessage(text, role) {
     label.textContent = role === "user" ? "You" : "AI Governance Agent";
 
     const body = document.createElement("div");
+    body.className = "markdown-body";
     if (role === "ai") {
-        // render Markdown from the model; fall back to plain text if marked isn't loaded
-        if (typeof marked !== "undefined" && marked.parse) {
-            body.innerHTML = marked.parse(text);
-        } else {
-            body.textContent = text;
-        }
+        // render Markdown from the model; fall back to a safe plain-text version if the library is unavailable
+        body.innerHTML = renderMarkdown(text);
     } else {
         // user input stays as plain text to avoid any HTML-injection risk
         body.textContent = text;
