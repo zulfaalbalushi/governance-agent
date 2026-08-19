@@ -51,7 +51,6 @@ The goal is to provide a grounded, auditable way for users to query Oman's AI go
    ```
    The landing page is served at `/` and the chat interface at `/chat`. Questions are submitted to `/ask` (POST).
 
-> Note: a `requirements.txt` is referenced above but is not yet committed to the repo. It should list the runtime dependencies named in the Tech Stack section (e.g. `flask`, `sentence-transformers`, `chromadb`, `groq`, `pypdf`, `python-docx`, `langchain-text-splitters`, `python-dotenv`).
 
 ## Architecture
 
